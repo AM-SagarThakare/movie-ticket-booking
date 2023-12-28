@@ -1,6 +1,9 @@
 import React from "react";
 import "./Register.css";
 import { useForm } from "react-hook-form";
+import { registerUser } from "../../services";
+import toast from 'react-hot-toast'
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const {
@@ -9,11 +12,19 @@ function Register() {
     getValues,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log("data", data);
-    
+  const onSubmit = (payload) => {
+    console.log("payload", payload);
+    delete payload.confirm_password;
 
+    registerUser(payload)
+      .then((res) => {
+
+        toast.success('User Registered Sucessfully')
+        navigate('/login')
+      })
+      .catch((err) => {});
   };
   return (
     <div className="register">
