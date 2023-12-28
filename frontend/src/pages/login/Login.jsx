@@ -2,6 +2,8 @@ import React from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { loginUser, setToken } from "../../services";
+import toast from 'react-hot-toast'
 
 function Login() {
   const navigate = useNavigate();
@@ -12,10 +14,18 @@ function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data)=>{
-    console.log('data',data);
-  }
-  
+  const onSubmit = (payload) => {
+    console.log("payload", payload);
+    loginUser(payload)
+      .then((res) => {
+        console.log(res);
+        setToken('token',res.data.token)
+        toast.success('Log in successful')
+        navigate('/')
+        
+      })
+      .catch((err) => {});
+  };
 
   return (
     <div className="login">
@@ -127,10 +137,7 @@ function Login() {
                   </button>
                   <p className="small fw-bold mt-2 pt-1 mb-0">
                     Don't have an account?{" "}
-                    <a
-                      href="/register"
-                      className="link-danger"
-                    >
+                    <a href="/register" className="link-danger">
                       Register
                     </a>
                   </p>
