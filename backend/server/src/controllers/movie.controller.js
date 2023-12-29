@@ -8,8 +8,8 @@ const addMovie = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(newMovie);
 });
 
-const getAllMovies = catchAsync(async (req,res) => {
-  const result =await  movieService.getAllMovies();
+const getAllMovies = catchAsync(async (req, res) => {
+  const result = await movieService.getAllMovies();
   res.status(httpStatus.OK).send(result);
 });
 
