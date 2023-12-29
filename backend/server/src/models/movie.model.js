@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { private } = require("./plugins");
+
 
 const movieSchema = mongoose.Schema(
   {
@@ -31,6 +33,8 @@ const movieSchema = mongoose.Schema(
     timestamp: true,
   }
 );
+
+movieSchema.plugin(private)
 
 const Movie = mongoose.model("Movie", movieSchema);
 

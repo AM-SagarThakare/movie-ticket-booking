@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { objectId } = require("./custom.validation");
 
 const addMovie = {
   body: Joi.object().keys({
@@ -8,5 +9,9 @@ const addMovie = {
     trailer: Joi.string().required(),
   }),
 };
-
-module.exports = { addMovie };
+const getMovieById = {
+  params: Joi.object().keys({
+    movie_id: Joi.string().required().custom(objectId),
+  }),
+};
+module.exports = { addMovie, getMovieById };

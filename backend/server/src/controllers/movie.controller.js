@@ -13,4 +13,9 @@ const getAllMovies = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(result);
 });
 
-module.exports = { addMovie, getAllMovies };
+const getMovieById = catchAsync(async (req, res) => {
+  const result =await movieService.getMovieById(req.params.movie_id);
+  res.status(httpStatus.OK).send(result);
+});
+
+module.exports = { addMovie, getAllMovies, getMovieById };

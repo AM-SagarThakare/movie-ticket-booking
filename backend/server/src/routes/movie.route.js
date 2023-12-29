@@ -4,7 +4,18 @@ const { movieValidation } = require("../validations");
 
 const router = require("express").Router();
 
-router.post("/add-movie",validate(movieValidation.addMovie) ,movieController.addMovie);
-router.get('/',movieController.getAllMovies)
+router.get("/", movieController.getAllMovies);
+
+router.get(
+  "/:movie_id",
+  [validate(movieValidation.getMovieById)],
+  movieController.getMovieById
+);
+router.post(
+  "/add-movie",
+  validate(movieValidation.addMovie),
+  movieController.addMovie
+);
+
 
 module.exports = router;

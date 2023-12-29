@@ -8,4 +8,8 @@ const getAllMovies = async () => {
   return await Movie.find();
 };
 
-module.exports = { addMovie, getAllMovies };
+const getMovieById = async (movie_id) => {
+  return await Movie.findById(movie_id);
+};
+
+module.exports = { addMovie, getAllMovies, getMovieById };
