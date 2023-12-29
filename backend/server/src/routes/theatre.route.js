@@ -4,10 +4,14 @@ const { theatreValidation } = require("../validations");
 
 const router = require("express").Router();
 
-router.post("/", [validate(theatreValidation.addTheatre)], theatreController.addTheatre);
-
 router.get("/", (req, res) => {
   res.send("in get");
 });
+
+router.post(
+  "/add-theatre",
+  [validate(theatreValidation.addTheatre)],
+  theatreController.addTheatre
+);
 
 module.exports = router;
