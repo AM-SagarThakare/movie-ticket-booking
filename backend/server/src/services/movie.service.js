@@ -9,7 +9,9 @@ const getAllMovies = async () => {
 };
 
 const getMovieById = async (movie_id) => {
-  return await Movie.findById(movie_id);
+  const a = await Movie.findById(movie_id);
+  console.log(a);
+  return a;
 };
 
 module.exports = { addMovie, getAllMovies, getMovieById };

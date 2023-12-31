@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {private} = require('./plugins')
+const { private } = require('./plugins')
 
 const theatreSchema = mongoose.Schema(
   {
@@ -12,10 +12,15 @@ const theatreSchema = mongoose.Schema(
       required: true,
     },
     bookedSeats: Number,
-    movies: [
-      {
+    movies: [{
+      movie: {
         type: mongoose.Schema.Types.ObjectId,
       },
+      time: [{
+        type: String
+      }]
+    }
+      ,
     ],
   },
   {

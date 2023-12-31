@@ -1,13 +1,21 @@
 import React from "react";
 import "./MoviesCard.css";
 import { PiStarHalfFill } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 function MoviesCard({ cards }) {
-  console.log(cards);
+
+  const navigate = useNavigate()
+
   return cards.map((ele) => (
     <div
       className="card rounded-5 m-auto overflow-hidden position-relative cursor"
       key={ele._id}
+      onClick={() => navigate(`/movie/${ele._id}`, {
+        state: {
+          movie_id: ele._id
+        }
+      })}
     >
       <img src={ele.displayImg} alt={ele.name} className=" object-fit-cover" />
 

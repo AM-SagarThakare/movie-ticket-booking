@@ -26,8 +26,8 @@ const movieSchema = mongoose.Schema(
     theatre: [{ type: mongoose.Schema.Types.ObjectId, ref: "Theatre" }],
     displayImg: {
       type: String,
-      required: true,
     },
+    coverImg : String
   },
   {
     timestamp: true,

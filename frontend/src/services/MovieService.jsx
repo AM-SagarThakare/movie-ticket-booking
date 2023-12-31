@@ -4,4 +4,8 @@ const getAllMovies = async () => {
   return await service.get("/movie");
 };
 
-export { getAllMovies };
+const getMovieById = async (movie_id) => {
+  return service.get(`/movie/${movie_id}`)
+}
+
+export { getAllMovies, getMovieById };
