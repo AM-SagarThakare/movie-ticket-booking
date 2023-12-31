@@ -9,9 +9,8 @@ const getAllMovies = async () => {
 };
 
 const getMovieById = async (movie_id) => {
-  const a = await Movie.findById(movie_id);
-  console.log(a);
-  return a;
+  return await
+    Movie.findById(movie_id).populate('theatre');
 };
 
 module.exports = { addMovie, getAllMovies, getMovieById };
