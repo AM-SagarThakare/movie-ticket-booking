@@ -4,4 +4,9 @@ const addTheatre = async (payload) => {
   return await Theatre.create(payload);
 };
 
-module.exports = { addTheatre };
+const updateTheatreById = async (theatre_id, updatedBody) => {
+  return await
+    Theatre.findOneAndUpdate({ _id: theatre_id }, updatedBody)
+}
+
+module.exports = { addTheatre, updateTheatreById };

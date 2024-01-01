@@ -23,11 +23,17 @@ const movieSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    theatre: [{ type: mongoose.Schema.Types.ObjectId, ref: "Theatre" }],
+    theatre: [{
+      theatre_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Theatre"
+      },
+      "time": [String]
+    }],
     displayImg: {
       type: String,
     },
-    coverImg : String
+    coverImg: String
   },
   {
     timestamp: true,

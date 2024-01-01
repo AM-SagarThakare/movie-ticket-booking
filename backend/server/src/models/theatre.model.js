@@ -13,12 +13,15 @@ const theatreSchema = mongoose.Schema(
     },
     bookedSeats: Number,
     movies: [{
-      movie: {
+      movie_id: {
         type: mongoose.Schema.Types.ObjectId,
       },
       time: [{
         type: String
-      }]
+      }],
+      ticket: String,
+      bookedSeats: [{ type: Number }],
+      temporaryBlockedSeats: [{ type: Number }]
     }
       ,
     ],

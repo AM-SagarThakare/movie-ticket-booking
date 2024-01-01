@@ -10,7 +10,10 @@ const getAllMovies = async () => {
 
 const getMovieById = async (movie_id) => {
   return await
-    Movie.findById(movie_id).populate('theatre');
+    Movie.findById(movie_id).populate('theatre.theatre_id','-movies');
 };
 
-module.exports = { addMovie, getAllMovies, getMovieById };
+const updateMovieById = async (movie_id, updatedBody) => {
+  return await Movie.findOneAndUpdate({_id: movie_id }, updatedBody);
+}
+module.exports = { addMovie, getAllMovies, getMovieById, updateMovieById };

@@ -11,10 +11,15 @@ const getAllMovies = catchAsync(async (req, res) => {
   const result = await movieService.getAllMovies();
   res.status(httpStatus.OK).send(result);
 });
-    
+
 const getMovieById = catchAsync(async (req, res) => {
-  const result =await movieService.getMovieById(req.params.movie_id);
+  const result = await movieService.getMovieById(req.params.movie_id);
   res.status(httpStatus.OK).send(result);
 });
 
-module.exports = { addMovie, getAllMovies, getMovieById };
+const updateMovie = catchAsync(async (req, res) => {
+  const result = await movieService.updateMovieById(req.params.movie_id,{...req.body})
+  res.status(httpStatus.OK).send(result)
+})
+
+module.exports = { addMovie, getAllMovies, getMovieById, updateMovie };

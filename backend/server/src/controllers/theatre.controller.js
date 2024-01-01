@@ -7,4 +7,9 @@ const addTheatre = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(newTheatre);
 });
 
-module.exports = { addTheatre };
+const updateTheatreById = catchAsync(async (req, res) => {
+  const result = await theatreService.updateTheatreById(req.params.theatre_id, { ...req.body });
+  res.status(httpStatus.OK).send(result)
+})
+
+module.exports = { addTheatre, updateTheatreById };
