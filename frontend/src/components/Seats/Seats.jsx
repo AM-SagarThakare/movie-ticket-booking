@@ -1,8 +1,7 @@
 import React from "react";
-import "./Seats.css";
 
-function Seats({ bookedSeats, temporaryBlockedSeats }) {
-  console.log(temporaryBlockedSeats);
+function Seats({ bookedSeats, temporaryBlockedSeats, setSelectedSeats }) {
+  //   console.log(temporaryBlockedSeats);
 
   const chairs = Array.from(Array(50), (_, index) => index + 1);
   const isTemporaryBlocked = (ele) => temporaryBlockedSeats?.includes(ele);
@@ -10,7 +9,7 @@ function Seats({ bookedSeats, temporaryBlockedSeats }) {
 
   return chairs.map((ele, ind) => (
     <span
-      className={`border p-1 cursor rounded d-flex justify-content-center align-items-center 
+      className={`empty-seat p-1 cursor rounded d-flex justify-content-center align-items-center 
                 ${
                   isAlreadyBooked(ele)
                     ? "booked-seat"
@@ -21,9 +20,7 @@ function Seats({ bookedSeats, temporaryBlockedSeats }) {
                 
         `}
       key={ind}
-      onClick={() => {
-        console.log(ele);
-      }}
+      onClick={() => setSelectedSeats((prev) => [...prev, ele])}
     >
       {ele}
     </span>

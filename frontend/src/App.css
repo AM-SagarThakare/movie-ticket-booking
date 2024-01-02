@@ -1,11 +1,30 @@
-
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 .cursor {
   cursor: pointer;
 }
-.error{
+.error {
   color: red;
   font-size: 14px;
+}
+
+.booked-seat {
+  background-color: #1ea83c !important;
+  color: black;
+  border: 1px solid rgb(115, 115, 115) !important;
+}
+.temporary-blocked {
+  background-color: #fcc42d;
+  color: black;
+  border: 1px solid rgb(115, 115, 115) !important;
+}
+
+.selected-seat {
+  background-color: aqua;
+  color: black;
+  border: 1px solid rgb(149, 149, 149);
+}
+.empty-seat{
+  border: 1px solid rgb(157, 157, 157);
 }
