@@ -19,7 +19,7 @@ function ChooseSeats() {
         console.log("result", result);
         setData(result.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
 
   return (
@@ -29,6 +29,7 @@ function ChooseSeats() {
       <div className="d-flex justify-content-center flex-column align-items-center gap-4">
         <div className="seats-container py-4">
           <Seats
+            selectedSeats={selectedSeats}
             setSelectedSeats={setSelectedSeats}
             bookedSeats={data?.bookedSeats}
             temporaryBlockedSeats={data?.temporaryBlockedSeats}
