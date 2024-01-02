@@ -1,3 +1,4 @@
 export { getToken, setToken } from "./TokenService";
-export {loginUser,registerUser} from './AuthService'
-export {getAllMovies,getMovieById} from './MovieService'
+export { loginUser, registerUser } from "./AuthService";
+export { getAllMovies, getMovieById } from "./MovieService";
+export { getShow } from "./ShowService";

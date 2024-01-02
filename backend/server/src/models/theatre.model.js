@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { private } = require('./plugins')
+const { private } = require("./plugins");
 
 const theatreSchema = mongoose.Schema(
   {
@@ -11,19 +11,10 @@ const theatreSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    bookedSeats: Number,
-    movies: [{
-      movie_id: {
+    movies: [
+      {
         type: mongoose.Schema.Types.ObjectId,
       },
-      time: [{
-        type: String
-      }],
-      ticket: String,
-      bookedSeats: [{ type: Number }],
-      temporaryBlockedSeats: [{ type: Number }]
-    }
-      ,
     ],
   },
   {
@@ -31,8 +22,7 @@ const theatreSchema = mongoose.Schema(
   }
 );
 
-theatreSchema.plugin(private)
-
+theatreSchema.plugin(private);
 
 const Theatre = mongoose.model("Theatre", theatreSchema);
 

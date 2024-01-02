@@ -5,12 +5,14 @@ const authRoute = require("./auth.route");
 const userRoute = require("./user.route");
 const theatreRoute = require("./theatre.route");
 const movieRoute = require("./movie.route");
+const showRoute = require('./show.route')
 
 const defaultRoutes = [
   { path: "/auth", route: authRoute }, // base path for auth routes
   { path: "/user", route: userRoute }, // base path for user routes
   { path: "/theatre", route: theatreRoute }, //base epath for theatre routes
   { path: "/movie", route: movieRoute }, //base epath for theatre routes
+  { path: "/show", route: showRoute }, //base epath for theatre routes
 ];
 
 defaultRoutes.map((route) => {
