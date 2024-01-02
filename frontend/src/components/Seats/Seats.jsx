@@ -10,7 +10,7 @@ function Seats({ bookedSeats, temporaryBlockedSeats }) {
 
   return chairs.map((ele, ind) => (
     <span
-      className={`border p-1 cursor rounded d-flex justify-content-center 
+      className={`border p-1 cursor rounded d-flex justify-content-center align-items-center 
                 ${
                   isAlreadyBooked(ele)
                     ? "booked-seat"

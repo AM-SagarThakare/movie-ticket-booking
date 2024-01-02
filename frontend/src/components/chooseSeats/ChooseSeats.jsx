@@ -30,7 +30,7 @@ function ChooseSeats() {
       <div className="d-flex justify-content-center flex-column align-items-center gap-4">
         <div className="seats-container py-4">
           <Seats
-            bookedSeats={bookedSeats}
+            bookedSeats={data?.bookedSeats}
             temporaryBlockedSeats={data?.temporaryBlockedSeats}
           />
         </div>
