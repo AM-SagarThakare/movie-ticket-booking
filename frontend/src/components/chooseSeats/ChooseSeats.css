@@ -1,0 +1,9 @@
+.seats-container {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(10, 35px); /* Creates 10 equal columns */
+  gap: 5px; /* Adjust the gap between elements as needed */
+  justify-content: center;
+  border: 1px solid black;
+  grid-row-gap: 20px;
+}

@@ -1,61 +1,45 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { getShow } from "../../services";
 import { useLocation } from "react-router-dom";
+import Seats from "../Seats/Seats";
+import "./ChooseSeats.css";
 
 function ChooseSeats() {
   const [data, setData] = useState({});
+  const [bookedSeats, setBookedSeats] = useState([]);
 
   const location = useLocation();
   const { movie_id, theatre_id, time } = location.state;
 
-  console.log(movie_id, theatre_id, time);
-
-  console.log("choose seat data", data);
+  console.log("choose seat data", data?.temporaryBlockedSeats);
 
   useEffect(() => {
     getShow(movie_id, theatre_id, time)
       .then((result) => {
         console.log("result", result);
         setData(result.data);
+        setBookedSeats(result.data.bookedSeats);
       })
       .catch((err) => {});
   }, []);
 
-  //   return (
-  //     <Modal
-  //       size="md"
-  //       aria-labelledby="contained-modal-title-vcenter"
-  //       centered
-  //       show={modalShow}
-  //     >
-  //       <Modal.Header>
-  //         <Modal.Title id="contained-modal-title-vcenter">
-  //           Choose Seats
-  //         </Modal.Title>
-  //       </Modal.Header>
-  //       <Modal.Body>
-  //         <h1>{data?.time}</h1>
-  //         {/* <p>{data?.time}</p> */}
-  //         <p>show avaible seats</p>
+  return (
+    <div className="container border border-danger">
+      <b>show seats here</b>
 
-  //       </Modal.Body>
-  //       <Modal.Footer>
-  //         <Button variant="danger" onClick={() => setModalShow(false)}>
-  //           Close
-  //         </Button>
-  //         <Button variant="success" onClick={() => setModalShow(false)}>
-  //           Select seats
-  //         </Button>
-  //       </Modal.Footer>
-  //     </Modal>
-  //   );
-
-  return <div className="container border border-danger">
-    <b>show seats here</b>
-    
-  </div>;
+      <div className="d-flex justify-content-center flex-column align-items-center gap-4">
+        <div className="seats-container py-4">
+          <Seats
+            bookedSeats={bookedSeats}
+            temporaryBlockedSeats={data?.temporaryBlockedSeats}
+          />
+        </div>
+        <div className="text-primary">
+          <span>All eyes this way please</span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ChooseSeats;

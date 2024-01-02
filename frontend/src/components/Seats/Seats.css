@@ -1,0 +1,10 @@
+.booked-seat {
+  background-color: #1ea83c !important;
+  color: black;
+  border : 1px solid black  !important;
+}
+.temporary-blocked {
+    background-color:#fcc42d;
+    color: black;
+    border : 1px solid black  !important;
+}
