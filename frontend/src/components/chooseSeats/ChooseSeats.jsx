@@ -12,6 +12,8 @@ function ChooseSeats() {
   const navigate = useNavigate();
   const { movie_id, theatre_id, time } = location.state;
 
+  console.log(data);
+
   useEffect(() => {
     getShow(movie_id, theatre_id, time)
       .then((result) => {

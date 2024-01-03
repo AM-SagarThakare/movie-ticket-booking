@@ -15,4 +15,17 @@ const getTicketById = {
   }),
 };
 
-module.exports = { addTicket, getTicketById };
+const updateTicketById = {
+  params: Joi.object().keys({
+    ticket_id: Joi.string().required().custom(objectId),
+  }),
+  body: Joi.object().keys({
+    bookedSeatNumber: Joi.array().items(
+      Joi.number().required()
+    ).required(),
+    show_id: Joi.string().required().custom(objectId),
+    paidAmount : Joi.number().required()
+  })
+}
+
+module.exports = { addTicket, getTicketById, updateTicketById };

@@ -46,7 +46,7 @@ function MoviesDetails() {
     <div>
       <div className="w-100 border border-danger " style={style}>
         <div
-          className="border border-primary container p-5 d-flex gap-5 text-light"
+          className=" container p-5 d-flex gap-5 text-light"
           style={{
             backgroundImage: "linear-gradient(90deg, black, transparent )",
           }}

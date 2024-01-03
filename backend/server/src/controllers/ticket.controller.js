@@ -36,4 +36,35 @@ const getTicketById = catchAsync(async (req, res) => {
   res.status(httpStatus.OK).send(result);
 });
 
-module.exports = { addTicket, getTicketById };
+
+const updateTicketById = catchAsync(async (req, res) => {
+  // console.log(req.params.ticket_id, { ...req.body });
+
+  let show = await showService.getShowById(req.body.show_id)
+
+  const updatedBlockedSeats = removeBookedSeats(show.temporaryBlockedSeats, req.body.bookedSeatNumber)
+  const updatedBookedSeats = updateBookedSeats(show.bookedSeats, req.body.bookedSeatNumber)
+
+  await showService.updateShowById(req.body.show_id,
+    {
+      temporaryBlockedSeats: updatedBlockedSeats,
+      bookedSeats: updatedBookedSeats
+    })
+
+  const result = await ticketService.updateTicketById(req.params.ticket_id, { paidAmount: req.body.paidAmount, ticketStatus: "booked" })
+  res.status(httpStatus.OK).send(result)
+})
+
+function removeBookedSeats(temporaryBlockedSeats, bookedSeatNumber) {
+
+  let filteredData = temporaryBlockedSeats.filter(ele => !bookedSeatNumber.includes(ele));
+  return filteredData.sort((a, b) => a - b)
+}
+
+function updateBookedSeats(bookedSeats, bookedSeatNumber) {
+  bookedSeats.push(...bookedSeatNumber)
+  return bookedSeats.sort((a, b) => a - b)
+}
+
+
+module.exports = { addTicket, getTicketById, updateTicketById };

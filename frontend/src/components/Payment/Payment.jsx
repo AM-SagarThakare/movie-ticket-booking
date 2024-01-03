@@ -1,22 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getTicket } from "../../services";
+import { getTicket, updateServiceById } from "../../services";
+import Swal from 'sweetalert2'
 
 function Payment() {
   const location = useLocation();
   const ticket_id = location.state.ticket_id;
   const [data, setData] = useState();
-  console.log(ticket_id);
-  // console.log(data);
 
   useEffect(() => {
     getTicket(ticket_id)
       .then((result) => {
-        console.log(result);
+        console.log(result.data);
         setData(result.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
+
+  const makePayment = () => {
+
+    Swal.fire({
+      title: "Confirm Payment",
+      text: "You won't be able to revert this!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Make Payment!"
+    }).then((result) => {
+
+      updateServiceById(data._id,
+        {
+          bookedSeatNumber: data.bookedSeatNumber,
+          show_id: data.show_id._id,
+          paidAmount :data?.show_id?.ticket * data?.bookedSeats,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              title: "Payment Done!",
+              text: "You will get tickets on your registered email-id.",
+              icon: "success"
+            });
+          }
+        })
+        .catch(() => { })
+
+
+    });
+  }
+
   return (
     <div className="container p-2">
       {/* alert message */}
@@ -58,13 +91,13 @@ function Payment() {
             after Payment your seat will be confirmed{" "}
           </span>
           <div>
-            <button type="button" className="btn btn-success">
+            <button type="button" className="btn btn-success" onClick={() => makePayment()}>
               Pay {data?.show_id?.ticket * data?.bookedSeats}
             </button>
           </div>
         </div>
       </div>
-      Payment
+
     </div>
   );
 }

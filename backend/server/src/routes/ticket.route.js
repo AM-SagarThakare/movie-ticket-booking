@@ -6,6 +6,7 @@ const { ticketValidation } = require("../validations");
 const router = require("express").Router()
 
 router.get('/:ticket_id', validate(ticketValidation.getTicketById),ticketController.getTicketById)
+router.patch('/:ticket_id',validate(ticketValidation.updateTicketById),ticketController.updateTicketById)
 router.post('/add-ticket',validate(ticketValidation.addTicket),ticketController.addTicket)
 
 module.exports = router
