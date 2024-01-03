@@ -4,7 +4,6 @@ const catchAsync = require("../utils/catchAsync");
 
 const getShow = catchAsync(async (req, res) => {
   const result = await showService.getShow({ ...req.params });
-  console.log(result);
   res.status(httpStatus.OK).send(result);
 });
 

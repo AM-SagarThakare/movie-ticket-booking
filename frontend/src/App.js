@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ChooseSeats, MovieDetails, Navbar } from "./components";
+import { ChooseSeats, MovieDetails, Navbar, Payment } from "./components";
 import { Homepage, Register } from "./pages";
 import Login from "./pages/login/Login";
 import { Toaster } from "react-hot-toast";
@@ -19,6 +18,7 @@ function App() {
           path="/movie/:movie_id/:theatre_id"
           element={<ChooseSeats />}
         ></Route>
+        <Route path="/movie/:movie_id/make-payment" element={<Payment />}></Route>
       </Routes>
 
       <Toaster position="top-center" reverseOrder={false} />

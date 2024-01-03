@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getShow } from "../../services";
-import { useLocation } from "react-router-dom";
+import { addTickets, getShow } from "../../services";
+import { useLocation, useNavigate } from "react-router-dom";
 import Seats from "../Seats/Seats";
 import "./ChooseSeats.css";
 
@@ -9,9 +9,8 @@ function ChooseSeats() {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const { movie_id, theatre_id, time } = location.state;
-
-  console.log("selected seats", selectedSeats);
 
   useEffect(() => {
     getShow(movie_id, theatre_id, time)
@@ -19,14 +18,29 @@ function ChooseSeats() {
         console.log("result", result);
         setData(result.data);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }, []);
+
+  const gotoPayment = (pathToPayment) => {
+    const payload = {
+      bookedSeats: selectedSeats.length,
+      show_id: data._id,
+      bookedSeatNumber: selectedSeats,
+    };
+
+    addTickets(payload)
+      .then((result) => {
+        console.log(result);
+        navigate(pathToPayment);
+      })
+      .catch((err) => {});
+  };
 
   return (
     <div className="container border border-danger">
-      <b>show seats here</b>
+      <b>Select Your favourite seat</b>
 
-      <div className="d-flex justify-content-center flex-column align-items-center gap-4">
+      <div className="d-flex justify-content-center flex-column align-items-center gap-3 pt-3">
         <div className="seats-container py-4">
           <Seats
             selectedSeats={selectedSeats}
@@ -54,6 +68,24 @@ function ChooseSeats() {
             <div className="p-2 selected-seat rounded"> </div>
             <span>- Your Selected Seat</span>
           </div>
+        </div>
+
+        {/* <span className="text-danger">after Payment your seat will be confirmed </span>
+        <div>
+          <button type="button" className="btn btn-success">
+            Pay {data.ticket*selectedSeats.length}
+          </button>
+        </div> */}
+
+        <div>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => gotoPayment(`/movie/${movie_id}/make-payment`)}
+            disabled={selectedSeats.length > 0 ? false : true}
+          >
+            Go to Payment
+          </button>
         </div>
       </div>
     </div>

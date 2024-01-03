@@ -1,11 +1,9 @@
-
 function Seats({
   selectedSeats,
   bookedSeats,
   temporaryBlockedSeats,
   setSelectedSeats,
 }) {
-
   // create chairs according to the capacity of theatre
   const chairs = Array.from(Array(70), (_, index) => index + 1);
 

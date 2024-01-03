@@ -5,3 +5,4 @@ module.exports.emailService = require("./email.service");
 module.exports.theatreService = require("./theatre.service");
 module.exports.movieService = require("./movie.service");
 module.exports.showService = require("./show.service");
+module.exports.ticketService = require("./ticket.service");

@@ -15,7 +15,7 @@ body {
   border: 1px solid rgb(115, 115, 115) !important;
 }
 .temporary-blocked {
-  background-color: #fcc42d;
+  background-color: #fcc42d !important;
   color: black;
   border: 1px solid rgb(115, 115, 115) !important;
 }
@@ -23,8 +23,12 @@ body {
 .selected-seat {
   background-color: aqua;
   color: black;
-  border: 1px solid rgb(149, 149, 149);
+  border: 1px solid rgb(35, 35, 35);
 }
-.empty-seat{
+.empty-seat {
   border: 1px solid rgb(157, 157, 157);
+}
+.empty-seat:hover {
+  background-color: aqua;
+  color: black;
 }
