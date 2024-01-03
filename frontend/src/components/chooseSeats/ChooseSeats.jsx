@@ -74,12 +74,7 @@ function ChooseSeats() {
           </div>
         </div>
 
-        {/* <span className="text-danger">after Payment your seat will be confirmed </span>
-        <div>
-          <button type="button" className="btn btn-success">
-            Pay {data.ticket*selectedSeats.length}
-          </button>
-        </div> */}
+        
 
         <div>
           <button

@@ -5,9 +5,8 @@ const addTicket = async (payload) => {
 };
 
 const getTicketById = async (ticket_id) => {
-  console.log(ticket_id);
 
-  return await Ticket.findOne({ _id: ticket_id });
+  return await Ticket.findOne({ _id: ticket_id }).populate('show_id');
 };
 
 module.exports = { addTicket, getTicketById };
