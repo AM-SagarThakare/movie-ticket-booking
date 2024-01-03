@@ -9,4 +9,10 @@ const addTicket = {
   }),
 };
 
-module.exports = { addTicket };
+const getTicketById = {
+  params: Joi.object().keys({
+    ticket_id: Joi.string().required().custom(objectId),
+  }),
+};
+
+module.exports = { addTicket, getTicketById };

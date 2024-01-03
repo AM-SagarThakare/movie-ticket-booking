@@ -31,4 +31,9 @@ const generateTicketNo = () => {
   return Math.floor(Math.random() * 10000);
 };
 
-module.exports = { addTicket };
+const getTicketById = catchAsync(async (req, res) => {
+  const result = await ticketService.getTicketById(req.params.ticket_id);
+  res.status(httpStatus.OK).send(result);
+});
+
+module.exports = { addTicket, getTicketById };

@@ -18,7 +18,7 @@ function App() {
           path="/movie/:movie_id/:theatre_id"
           element={<ChooseSeats />}
         ></Route>
-        <Route path="/movie/:movie_id/make-payment" element={<Payment />}></Route>
+        <Route path="/movie/:movie_id/make-payment/:ticket_id" element={<Payment />}></Route>
       </Routes>
 
       <Toaster position="top-center" reverseOrder={false} />

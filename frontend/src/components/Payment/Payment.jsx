@@ -1,18 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { getTicket } from "../../services";
 
 function Payment() {
   const location = useLocation();
-  // const show_id = location.state.show_id;
-  // console.log(show_id);
+  const ticket_id = location.state.ticket_id;
+  const [data, setData] = useState();
+  console.log(ticket_id);
+  // console.log(data);
 
   useEffect(() => {
-    console.log("ss");
+    getTicket(ticket_id)
+      .then((result) => {
+        console.log(result);
+        setData(result.data);
+      })
+      .catch((err) => {});
   }, []);
   return (
     <div className="container">
-      <div className="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Hurray Your seats temporary booked for 10 minutes!  </strong> 
+      <div
+        className="alert alert-danger alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>Hurray Your seats temporary booked for 10 minutes! </strong>
         Make Payment for confirm your books
         <button
           type="button"

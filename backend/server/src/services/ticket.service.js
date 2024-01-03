@@ -1,7 +1,13 @@
-const { Ticket } = require("../models")
+const { Ticket } = require("../models");
 
-const addTicket = async (payload)=>{
-    return await Ticket.create(payload)
-}
+const addTicket = async (payload) => {
+  return await Ticket.create(payload);
+};
 
-module.exports = {addTicket}
+const getTicketById = async (ticket_id) => {
+  console.log(ticket_id);
+
+  return await Ticket.findOne({ _id: ticket_id });
+};
+
+module.exports = { addTicket, getTicketById };

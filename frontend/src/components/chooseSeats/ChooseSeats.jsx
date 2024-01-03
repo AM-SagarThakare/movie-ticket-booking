@@ -21,7 +21,7 @@ function ChooseSeats() {
       .catch((err) => {});
   }, []);
 
-  const gotoPayment = (pathToPayment) => {
+  const gotoPayment = () => {
     const payload = {
       bookedSeats: selectedSeats.length,
       show_id: data._id,
@@ -31,7 +31,11 @@ function ChooseSeats() {
     addTickets(payload)
       .then((result) => {
         console.log(result);
-        navigate(pathToPayment);
+        navigate(`/movie/${movie_id}/make-payment/:${data._id}`, {
+          state: {
+            ticket_id: result.data._id,
+          },
+        });
       })
       .catch((err) => {});
   };
@@ -81,7 +85,7 @@ function ChooseSeats() {
           <button
             type="button"
             className="btn btn-success"
-            onClick={() => gotoPayment(`/movie/${movie_id}/make-payment`)}
+            onClick={() => gotoPayment()}
             disabled={selectedSeats.length > 0 ? false : true}
           >
             Go to Payment
