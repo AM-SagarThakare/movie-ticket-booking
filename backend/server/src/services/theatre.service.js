@@ -5,8 +5,10 @@ const addTheatre = async (payload) => {
 };
 
 const updateTheatreById = async (theatre_id, updatedBody) => {
-  return await
-    Theatre.findOneAndUpdate({ _id: theatre_id }, updatedBody)
-}
+  return await Theatre.findOneAndUpdate({ _id: theatre_id }, updatedBody);
+};
 
-module.exports = { addTheatre, updateTheatreById };
+const getTheatreById =async (theatre_id) => {
+  return await Theatre.findById(theatre_id)
+};
+module.exports = { addTheatre, updateTheatreById, getTheatreById };

@@ -11,12 +11,12 @@ function Payment() {
   }, []);
   return (
     <div className="container">
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div className="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Hurray Your seats temporary booked for 10 minutes!  </strong> 
         Make Payment for confirm your books
         <button
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         ></button>

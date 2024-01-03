@@ -11,4 +11,10 @@ const addShow = catchAsync(async (req, res) => {
   const result = await showService.addShow({ ...req.body });
   res.send(result);
 });
-module.exports = { getShow, addShow };
+
+function updateShowdata(show, bookedSeatsNumber) {
+  show.temporaryBlockedSeats.push(...bookedSeatsNumber);
+  return show.temporaryBlockedSeats.sort((a, b) => a - b);
+}
+
+module.exports = { getShow, addShow, updateShowdata };

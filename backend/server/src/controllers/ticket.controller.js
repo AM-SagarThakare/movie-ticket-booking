@@ -1,19 +1,29 @@
 const httpStatus = require("http-status");
-const { ticketService } = require("../services");
+const { ticketService, showService } = require("../services");
 const catchAsync = require("../utils/catchAsync");
+const { updateShowdata } = require("./show.controller");
 
 const addTicket = catchAsync(async (req, res) => {
+  const bookedSeatsNumber = req.body.bookedSeatNumber;
 
   payload = {
     ticketNo: generateTicketNo(),
     bookedSeats: req.body.bookedSeats,
     user_id: req.user,
     show_id: req.body.show_id,
-    bookedSeatNumber : req.body.bookedSeatNumber
+    bookedSeatNumber: bookedSeatsNumber,
   };
-  console.log('payload',payload);
 
-  const result = await ticketService.addTicket(payload);
+  let result = await ticketService.addTicket(payload);
+
+  const show = await showService.getShowById(result.show_id);
+
+  const updatedData = updateShowdata(show, bookedSeatsNumber);
+
+  await showService.updateShowById(show._id, {
+    temporaryBlockedSeats: updatedData,
+  });
+
   res.status(httpStatus.CREATED).send(result);
 });
 
