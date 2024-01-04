@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getTicket, updateServiceById } from "../../services";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,7 @@ function Payment() {
   const location = useLocation();
   const ticket_id = location.state.ticket_id;
   const [data, setData] = useState();
+  const navigate = useNavigate()
 
   useEffect(() => {
     getTicket(ticket_id)
@@ -28,6 +29,7 @@ function Payment() {
       confirmButtonText: "Yes, Make Payment!",
     }).then((result) => {
       console.log(result);
+
       if (result.isConfirmed) {
         updateServiceById(data._id, {
           bookedSeatNumber: data.bookedSeatNumber,
@@ -35,13 +37,13 @@ function Payment() {
           paidAmount: data?.show_id?.ticket * data?.bookedSeats,
         })
           .then((result) => {
-            if (result.isConfirmed) {
-              Swal.fire({
-                title: "Payment Done!",
-                text: "You will get tickets on your registered email-id.",
-                icon: "success",
-              });
-            }
+            Swal.fire({
+              title: "Payment Done!",
+              text: "You will get tickets on your registered email-id.",
+              icon: "success",
+            }).then(()=>{
+              navigate('/')
+            })
           })
           .catch(() => {});
       }
