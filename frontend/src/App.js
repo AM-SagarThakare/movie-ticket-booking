@@ -17,7 +17,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
 
-        <Route path="/movie/:movie_id/" element={<CheckToken />}>
+        <Route path="/user/movie/:movie_id/" element={<CheckToken />}>
           <Route path="" element={<MovieDetails />}></Route>
           <Route path=":theatre_id" element={<ChooseSeats />}></Route>
           <Route path="make-payment/:ticket_id" element={<Payment />}></Route>

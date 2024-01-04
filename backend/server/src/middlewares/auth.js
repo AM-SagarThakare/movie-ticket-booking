@@ -5,8 +5,9 @@ const httpStatus = require("http-status");
 const auth =
   (...requiredRights) =>
   async (req, res, next) => {
+    console.log(req.headers.authorization);
     return new Promise((resolve, reject) => {
-      passport.authenticate(
+      passport.authenticate(  
         "jwt",
         {
           session: false,
@@ -24,6 +25,8 @@ const auth =
 
 const verifyCallBack = (req, resolve, reject, requiredRights) => {
   // err, user, info this data coming from jwtVerify() => done(null,user)
+
+
   return async (err, user, info) => {
     if (err || info || !user) {
       return reject(

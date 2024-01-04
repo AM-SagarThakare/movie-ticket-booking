@@ -27,7 +27,7 @@ function MoviesCard({ cards }) {
   const checkUserLogin = (ele) => {
     console.log(getToken("token"));
     if (getToken("token")) {
-      navigate(`/movie/${ele._id}`, {
+      navigate(`/user/movie/${ele._id}`, {
         state: {
           movie_id: ele._id,
         },

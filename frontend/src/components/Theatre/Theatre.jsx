@@ -15,7 +15,7 @@ function Theatre({ theatre, movie_id }) {
           className="border border-2 px-2 p-1 border-success cursor"
           key={ind}
           onClick={() => {
-            navigate(`/movie/${movie_id}/${element._id}`, {
+            navigate(`/user/movie/${movie_id}/${element._id}`, {
               state: {
                 movie_id,
                 theatre_id: element?.theatre_id?._id,

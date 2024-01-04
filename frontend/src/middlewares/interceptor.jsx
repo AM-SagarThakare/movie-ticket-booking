@@ -7,7 +7,10 @@ const service = axios.create({
 });
 
 service.interceptors.request.use((req) => {
+
+  
   if (req.url.includes("user")) {
+    console.log(`Bearer ${getToken("token")}`);
     req.headers.Authorization = `Bearer ${getToken("token")}`;
   }
 

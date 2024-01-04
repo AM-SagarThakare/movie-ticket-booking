@@ -37,7 +37,7 @@ module.exports = {
     resetPasswordExpirationMinutes:
       envVars.JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
     verifyEmailExpirationMinutes: envVars.JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
-  },
+  },  
   mongoose: {
     url: envVars.MONGODB_URL + (envVars.NODE_ENV === "test" ? "-test" : ""),
     options: {
