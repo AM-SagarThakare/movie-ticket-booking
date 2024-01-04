@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getTicket, updateServiceById } from "../../services";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function Payment() {
   const location = useLocation();
@@ -14,11 +14,10 @@ function Payment() {
         console.log(result.data);
         setData(result.data);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }, []);
 
   const makePayment = () => {
-
     Swal.fire({
       title: "Confirm Payment",
       text: "You won't be able to revert this!",
@@ -26,29 +25,28 @@ function Payment() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Make Payment!"
+      confirmButtonText: "Yes, Make Payment!",
     }).then((result) => {
-
-      updateServiceById(data._id,
-        {
+      console.log(result);
+      if (result.isConfirmed) {
+        updateServiceById(data._id, {
           bookedSeatNumber: data.bookedSeatNumber,
           show_id: data.show_id._id,
-          paidAmount :data?.show_id?.ticket * data?.bookedSeats,
+          paidAmount: data?.show_id?.ticket * data?.bookedSeats,
         })
-        .then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire({
-              title: "Payment Done!",
-              text: "You will get tickets on your registered email-id.",
-              icon: "success"
-            });
-          }
-        })
-        .catch(() => { })
-
-
+          .then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Payment Done!",
+                text: "You will get tickets on your registered email-id.",
+                icon: "success",
+              });
+            }
+          })
+          .catch(() => {});
+      }
     });
-  }
+  };
 
   return (
     <div className="container p-2">
@@ -91,13 +89,16 @@ function Payment() {
             after Payment your seat will be confirmed{" "}
           </span>
           <div>
-            <button type="button" className="btn btn-success" onClick={() => makePayment()}>
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={() => makePayment()}
+            >
               Pay {data?.show_id?.ticket * data?.bookedSeats}
             </button>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

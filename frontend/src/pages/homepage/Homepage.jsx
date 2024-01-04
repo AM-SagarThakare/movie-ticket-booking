@@ -20,7 +20,7 @@ function Homepage() {
 
 
   return (
-    <div className="container border border-danger">
+    <div className="container">
       {/* pramotion image */}
       <div className="d-flex justify-content-center py-5">
         <img
