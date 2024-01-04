@@ -6,7 +6,7 @@ import Login from "./pages/login/Login";
 import { Toaster } from "react-hot-toast";
 import { getToken } from "./services";
 import CheckToken from "./components/utils/CheckToken";
-import Error from "./components/Error";
+import Error from "./components/UrlNotFound";
 
 function App() {
   return (

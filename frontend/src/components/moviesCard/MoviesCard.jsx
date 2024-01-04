@@ -10,8 +10,7 @@ function MoviesCard({ cards }) {
 
   const showLoginMessage = () => {
     Swal.fire({
-      title: "You need to login first",
-      text: "You won't be able to revert this!",
+      title: "You need to Login first",
       icon: "error",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
