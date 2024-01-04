@@ -13,11 +13,13 @@ body {
   background-color: #1ea83c !important;
   color: black;
   border: 1px solid rgb(115, 115, 115) !important;
+  cursor: not-allowed;
 }
 .temporary-blocked {
   background-color: #fcc42d !important;
   color: black;
   border: 1px solid rgb(115, 115, 115) !important;
+  cursor: not-allowed;
 }
 
 .selected-seat {
