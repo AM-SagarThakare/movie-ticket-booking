@@ -1,5 +1,5 @@
 import React from "react";
-import gif from '../images/404_loop_4by3.gif'
+import gif from '../images/404.gif'
 
 function Error() {
   return <div className="bg-dark w-100">
