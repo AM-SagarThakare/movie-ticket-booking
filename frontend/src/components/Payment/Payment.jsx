@@ -12,7 +12,6 @@ function Payment() {
   useEffect(() => {
     getTicket(ticket_id)
       .then((result) => {
-        console.log(result.data);
         setData(result.data);
       })
       .catch((err) => {});
@@ -28,7 +27,6 @@ function Payment() {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Make Payment!",
     }).then((result) => {
-      console.log(result);
 
       if (result.isConfirmed) {
         updateServiceById(data._id, {

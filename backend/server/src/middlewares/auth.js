@@ -5,7 +5,6 @@ const httpStatus = require("http-status");
 const auth =
   (...requiredRights) =>
   async (req, res, next) => {
-    console.log(req.headers.authorization);
     return new Promise((resolve, reject) => {
       passport.authenticate(  
         "jwt",

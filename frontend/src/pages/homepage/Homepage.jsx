@@ -14,7 +14,6 @@ function Homepage() {
         setCardsData(result.data);
       })
       .catch((err) => {
-        console.log(err);
       });
   }, []);
 

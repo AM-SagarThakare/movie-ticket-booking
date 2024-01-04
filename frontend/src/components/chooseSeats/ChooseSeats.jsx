@@ -12,12 +12,9 @@ function ChooseSeats() {
   const navigate = useNavigate();
   const { movie_id, theatre_id, time } = location.state;
 
-  console.log(data);
-
   useEffect(() => {
     getShow(movie_id, theatre_id, time)
       .then((result) => {
-        console.log("result", result);
         setData(result.data);
       })
       .catch((err) => {});
@@ -32,7 +29,6 @@ function ChooseSeats() {
 
     addTickets(payload)
       .then((result) => {
-        console.log(result);
         navigate(`/user/movie/${movie_id}/make-payment/:${data._id}`, {
           state: {
             ticket_id: result.data._id,

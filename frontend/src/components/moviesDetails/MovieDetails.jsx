@@ -10,8 +10,6 @@ function MoviesDetails() {
   const movie_id = location.state.movie_id;
   const [data, setData] = useState();
 
-  console.log("movie details", data);
-
   const getLanguages = () => {
     return data?.audio.map((language, ind) => (
       <b className="bg-light text-dark px-2" key={ind}>
@@ -24,11 +22,8 @@ function MoviesDetails() {
     getMovieById(movie_id)
       .then((result) => {
         setData(result.data);
-        // setTheatre(result.data.theatre)
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }, []);
 
   const style = {
@@ -79,9 +74,14 @@ function MoviesDetails() {
             <div className="d-flex border border-light p-3 rounded rounded-3 gap-3 align-items-center">
               <div className="d-flex flex-column">
                 <h5>Releasing on 1 feb,2024</h5>
-                <span className="fs-6"> Are you interested to see this movie?</span>
+                <span className="fs-6">
+                  {" "}
+                  Are you interested to see this movie?
+                </span>
               </div>
-              <button type="button" className="btn bg-light text-dark">I'm Interested</button>
+              <button type="button" className="btn bg-light text-dark">
+                I'm Interested
+              </button>
             </div>
           </div>
         </div>

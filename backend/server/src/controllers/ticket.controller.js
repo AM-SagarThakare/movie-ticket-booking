@@ -38,7 +38,6 @@ const getTicketById = catchAsync(async (req, res) => {
 
 
 const updateTicketById = catchAsync(async (req, res) => {
-  // console.log(req.params.ticket_id, { ...req.body });
 
   let show = await showService.getShowById(req.body.show_id)
 

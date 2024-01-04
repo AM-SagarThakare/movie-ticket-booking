@@ -15,7 +15,6 @@ function Register() {
   const navigate = useNavigate();
 
   const onSubmit = (payload) => {
-    console.log("payload", payload);
     delete payload.confirm_password;
 
     registerUser(payload)

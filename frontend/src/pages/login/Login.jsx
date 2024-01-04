@@ -15,10 +15,8 @@ function Login() {
   } = useForm();
 
   const onSubmit = (payload) => {
-    console.log("payload", payload);
     loginUser(payload)
       .then((res) => {
-        console.log(res);
         setToken("token", res.data.token);
         toast.success("Log in successful");
         navigate("/");
