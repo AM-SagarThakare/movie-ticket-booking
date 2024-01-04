@@ -5,7 +5,6 @@ function LoginRequired() {
   const show = () => {
     Swal.fire({
       title: "You need to login first!",
-
       icon: "warning",
     });
   };
