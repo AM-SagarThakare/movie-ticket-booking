@@ -3,7 +3,7 @@ import "./Login.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { loginUser, setToken } from "../../services";
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,10 +19,9 @@ function Login() {
     loginUser(payload)
       .then((res) => {
         console.log(res);
-        setToken('token',res.data.token)
-        toast.success('Log in successful')
-        navigate('/')
-        
+        setToken("token", res.data.token);
+        toast.success("Log in successful");
+        navigate("/");
       })
       .catch((err) => {});
   };

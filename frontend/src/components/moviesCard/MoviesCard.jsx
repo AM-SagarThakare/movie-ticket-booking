@@ -9,7 +9,7 @@ function MoviesCard({ cards }) {
 
   return cards.map((ele) => (
     <div
-      className="card rounded-5 m-auto overflow-hidden position-relative cursor"
+      className="card rounded-5 m-auto overflow-hidden position-relative cursor"  
       key={ele._id}
       onClick={() => navigate(`/movie/${ele._id}`, {
         state: {

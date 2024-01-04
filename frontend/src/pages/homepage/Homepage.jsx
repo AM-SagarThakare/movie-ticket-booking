@@ -35,10 +35,10 @@ function Homepage() {
 
         <div className="d-flex justify-content-between p-2">
           <h4 className="text-dark">Recommended Movies</h4>
-          <span className="text-danger"> {text} </span>
+          <span className="text-danger cursor"> {text} </span>
         </div>
 
-        <div className="d-flex flex-wrap">
+        <div className="d-flex gap-5 overflow-x-scroll w-100" >
           <MoviesCard cards={cardData} />
         </div>
       </div>
